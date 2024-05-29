@@ -1,7 +1,7 @@
 from django.urls import path
 
-from google_drive.views import GdriveView
+from google_drive.views import GDriveView
 
 urlpatterns = [
-    path('drive/', GdriveView.as_view()),
+    path('gdrive/', GDriveView.as_view(), name='gdrive'),
 ]

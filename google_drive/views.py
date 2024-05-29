@@ -5,7 +5,7 @@ from google_drive.serializers import FileCreateSerializer, FilesListSerializer
 from google_drive.services import GoogleDriveService
 
 
-class GdriveView(generics.ListCreateAPIView):
+class GDriveView(generics.ListCreateAPIView):
     serializer_class = FileCreateSerializer
     service = GoogleDriveService
     choice_serializer = {
@@ -34,3 +34,6 @@ class GdriveView(generics.ListCreateAPIView):
 
     def get_serializer_class(self, *args, **kwargs):
         return self.choice_serializer.get(self.request.method, self.serializer_class)
+
+    def get_queryset(self):
+        return None
