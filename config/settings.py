@@ -141,3 +141,9 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
     'PAGE_SIZE': 10,
 }
+
+# настройки google drive
+SCOPES = ['https://www.googleapis.com/auth/drive']
+SERVICE_ACCOUNT_FILE = BASE_DIR / 'security' / env.str('SERVICE_ACCOUNT_FILE')
+FOLDER_ID = '1gY-vzj6i53XXFUN7vEA2F0PmteC0b9OZ'  # папка drf
+ALLOWED_EXTENSIONS = {'pdf', 'doc', 'docx', 'txt'}
