@@ -1,4 +1,3 @@
-import pprint
 import tempfile
 from abc import ABC, abstractmethod
 
@@ -36,11 +35,11 @@ class GoogleDriveService(RemoteStorageService):
             media = MediaFileUpload(tmp_file.name, resumable=True)
 
         file = self.__service.files().create(body=file_metadata, media_body=media, fields='id').execute()
-        pprint.pprint(file)
+        return file.get('id')
 
     def get_files(self):
         results = self.__service.files().list(
             pageSize=10,
             fields='nextPageToken, files(id, name, mimeType)'
         ).execute()
-        pprint.pprint(results)
+        return results.get('files')

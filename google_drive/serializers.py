@@ -3,7 +3,7 @@ from rest_framework import serializers
 from config.settings import ALLOWED_EXTENSIONS, MAX_FILE_SIZE
 
 
-class GDdriveSerializer(serializers.Serializer):
+class FileCreateSerializer(serializers.Serializer):
     name = serializers.CharField(max_length=100)
     data = serializers.CharField()
 
@@ -21,3 +21,9 @@ class GDdriveSerializer(serializers.Serializer):
                 f'Размер файла превышает допустимый лимит, максимум {MAX_FILE_SIZE} МБ'
             )
         return value
+
+
+class FilesListSerializer(serializers.Serializer):
+    mimeType = serializers.CharField()
+    id = serializers.CharField()
+    name = serializers.CharField()
