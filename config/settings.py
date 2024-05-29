@@ -147,3 +147,4 @@ SCOPES = ['https://www.googleapis.com/auth/drive']
 SERVICE_ACCOUNT_FILE = BASE_DIR / 'security' / env.str('SERVICE_ACCOUNT_FILE')
 FOLDER_ID = '1gY-vzj6i53XXFUN7vEA2F0PmteC0b9OZ'  # папка drf
 ALLOWED_EXTENSIONS = {'pdf', 'doc', 'docx', 'txt'}
+MAX_FILE_SIZE = 10 * 1024 * 1024  # 10 МБ в байтах
