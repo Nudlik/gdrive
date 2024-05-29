@@ -6,6 +6,11 @@ from google_drive.services import GoogleDriveService
 
 
 class GDriveView(generics.ListCreateAPIView):
+    """
+    GET: получить список файлов
+    POST: создание файла в Google Drive
+    """
+
     serializer_class = FileCreateSerializer
     service = GoogleDriveService
     choice_serializer = {

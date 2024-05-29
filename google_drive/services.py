@@ -9,6 +9,7 @@ from config.settings import SERVICE_ACCOUNT_FILE, SCOPES, FOLDER_ID
 
 
 class RemoteStorageService(ABC):
+    """ "Огрызок" абстрактного интерфейса """
 
     @abstractmethod
     def upload(self, name, data):
@@ -16,6 +17,8 @@ class RemoteStorageService(ABC):
 
 
 class GoogleDriveService(RemoteStorageService):
+    """ Реализация абстрактного интерфейса посредством Google Drive API """
+
     __credentials = service_account.Credentials.from_service_account_file(
         filename=SERVICE_ACCOUNT_FILE,
         scopes=SCOPES,
@@ -23,6 +26,8 @@ class GoogleDriveService(RemoteStorageService):
     __service = build('drive', 'v3', credentials=__credentials)
 
     def upload(self, name, data):
+        """ Загрузка файла в Google Drive """
+
         file_metadata = {
             'name': name,
             'parents': [FOLDER_ID]
@@ -38,6 +43,8 @@ class GoogleDriveService(RemoteStorageService):
         return file.get('id')
 
     def get_files(self):
+        """ Получение списка файла в Google Drive """
+
         results = self.__service.files().list(
             pageSize=10,
             fields='nextPageToken, files(id, name, mimeType)'
