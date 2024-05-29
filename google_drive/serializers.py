@@ -6,6 +6,7 @@ from config.settings import ALLOWED_EXTENSIONS, MAX_FILE_SIZE
 class FileCreateSerializer(serializers.Serializer):
     name = serializers.CharField(max_length=100)
     data = serializers.CharField()
+    id = serializers.CharField(read_only=True, required=False)
 
     def validate_name(self, value):
         name = value.rsplit('.')[-1].lower()
