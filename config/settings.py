@@ -42,6 +42,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'drf_yasg',
+
+    'google_drive.apps.GdriveConfig',
 ]
 
 MIDDLEWARE = [
